@@ -37,12 +37,12 @@ pipeline {
             steps{
                 sh "mvn clean package"
                 echo 'convert the files to war file'
-		    post {
-                success {
-                    echo "Now Archiving."
-                    archiveArtifacts artifacts: '**/*.war'
-                }
-            }
+	//	    post {
+        //        success {
+        //            echo "Now Archiving."
+        //            archiveArtifacts artifacts: '**/*.war'
+        //        }
+        //    }
 	    }
 	 }
 		stage('Checkstyle Analysis'){
