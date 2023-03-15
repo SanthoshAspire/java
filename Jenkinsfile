@@ -1,12 +1,14 @@
 pipeline {
     agent any
      tools {
-    maven 'maven'
+    maven 'MAVEN_JENKINS'
   }
     stages {
         stage('Build') {
             steps {
+		sh 'mvn compile'    
                 sh 'mvn -B -DskipTests clean package'
+		echo 'converted the code from human readable to machine readable '
             }
         }
         stage('Test') {
@@ -19,6 +21,12 @@ pipeline {
                 }
             }
         }
+	 stage("convert the code to package"){
+            steps{
+                sh "mvn clean package"
+                echo 'convert the files to war file'
+	    }
+	 }
 		stage('Checkstyle Analysis'){
             steps {
                 sh 'mvn -s settings.xml checkstyle:checkstyle'
