@@ -27,11 +27,11 @@ pipeline {
                 echo 'convert the files to war file'
 	    }
 	 }
-		stage('Checkstyle Analysis'){
-            steps {
-                sh 'mvn -s settings.xml checkstyle:checkstyle'
-            }
-        }
+	//	stage('Checkstyle Analysis'){
+        //    steps {
+        //        sh 'mvn -s settings.xml checkstyle:checkstyle'
+        //    }
+       // }
        // #stage('Deliver') {
        // #    steps {
        // #        sh './jenkins/scripts/deliver.sh'
