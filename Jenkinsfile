@@ -20,12 +20,7 @@ pipeline {
 		sh 'mvn compile'    
                 sh 'mvn -B -DskipTests clean package'
 		echo 'converted the code from human readable to machine readable '
-		    post {
-                success {
-                    echo "Now Archiving."
-                    archiveArtifacts artifacts: '**/*.war'
-                }
-            }
+		    
             }
         }
         stage('Test') {
@@ -42,6 +37,12 @@ pipeline {
             steps{
                 sh "mvn clean package"
                 echo 'convert the files to war file'
+		    post {
+                success {
+                    echo "Now Archiving."
+                    archiveArtifacts artifacts: '**/*.war'
+                }
+            }
 	    }
 	 }
 		stage('Checkstyle Analysis'){
